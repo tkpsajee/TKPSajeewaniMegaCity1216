@@ -1,0 +1,41 @@
+<!-- 
+
+package com.megacitycab.webservice;
+
+import com.megacitycab.dao.BookingDAO;
+import com.megacitycab.model.Booking;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+@Path("/bookings")
+public class BookingResource {
+
+    private static final Logger LOGGER = Logger.getLogger(BookingResource.class.getName());
+    private final BookingDAO bookingDAO = new BookingDAO();
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllBookings() {
+        LOGGER.info("getAllBookings method called");
+
+        try {
+            List<Booking> bookings = bookingDAO.getAllBookings();
+            LOGGER.log(Level.INFO, "Retrieved {0} bookings from the database", bookings.size());
+            bookings.forEach(booking -> LOGGER.log(Level.FINE, "Booking: {0}", booking));
+
+            return Response.ok(bookings).build();
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error retrieving bookings from the database", e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                          .entity("An error occurred while retrieving bookings. Please try again later.")
+                          .build();
+        }
+    }
+}
+
+-->
